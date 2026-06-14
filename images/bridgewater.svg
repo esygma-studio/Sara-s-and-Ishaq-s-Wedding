@@ -1,0 +1,273 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620">
+  <defs>
+    <!-- Painted edge wobble -->
+    <filter id="p" x="-4%" y="-4%" width="108%" height="108%">
+      <feTurbulence type="turbulence" baseFrequency="0.035" numOctaves="2" seed="8" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- Soft brush blur -->
+    <filter id="b" x="-6%" y="-6%" width="112%" height="112%">
+      <feGaussianBlur stdDeviation="2.5"/>
+    </filter>
+    <!-- Subtle grain texture -->
+    <filter id="g">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="gn"/>
+      <feBlend in="SourceGraphic" in2="gn" mode="multiply" result="gr"/>
+      <feComponentTransfer in="gr"><feFuncA type="linear" slope="0.96"/></feComponentTransfer>
+    </filter>
+    <!-- Sky gradient -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B8CCDA" stop-opacity="0.75"/>
+      <stop offset="45%" stop-color="#D4E0E8" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#EDE4D4" stop-opacity="0.5"/>
+    </linearGradient>
+    <!-- Ground gradient -->
+    <linearGradient id="gnd" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8EA872"/>
+      <stop offset="60%" stop-color="#A09660"/>
+      <stop offset="100%" stop-color="#C4A870"/>
+    </linearGradient>
+    <!-- Warm brick palette -->
+    <linearGradient id="bk" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#A86048"/>
+      <stop offset="50%" stop-color="#C07860"/>
+      <stop offset="100%" stop-color="#A86048"/>
+    </linearGradient>
+    <!-- Stone/trim gradient -->
+    <linearGradient id="st" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F0E4CC"/>
+      <stop offset="100%" stop-color="#D8C8A4"/>
+    </linearGradient>
+    <!-- Vignette -->
+    <radialGradient id="vig" cx="50%" cy="50%" r="68%">
+      <stop offset="0%" stop-color="rgba(250,247,240,0)"/>
+      <stop offset="75%" stop-color="rgba(250,247,240,0)"/>
+      <stop offset="100%" stop-color="rgba(250,247,240,0.82)"/>
+    </radialGradient>
+    <!-- Corner bleeds -->
+    <radialGradient id="bl-tl" cx="0%" cy="0%" r="55%">
+      <stop offset="0%" stop-color="rgba(250,247,240,0.55)"/>
+      <stop offset="100%" stop-color="rgba(250,247,240,0)"/>
+    </radialGradient>
+    <radialGradient id="bl-tr" cx="100%" cy="0%" r="55%">
+      <stop offset="0%" stop-color="rgba(242,236,226,0.50)"/>
+      <stop offset="100%" stop-color="rgba(242,236,226,0)"/>
+    </radialGradient>
+    <radialGradient id="bl-bl" cx="0%" cy="100%" r="55%">
+      <stop offset="0%" stop-color="rgba(242,236,226,0.48)"/>
+      <stop offset="100%" stop-color="rgba(242,236,226,0)"/>
+    </radialGradient>
+    <radialGradient id="bl-br" cx="100%" cy="100%" r="55%">
+      <stop offset="0%" stop-color="rgba(250,247,240,0.52)"/>
+      <stop offset="100%" stop-color="rgba(250,247,240,0)"/>
+    </radialGradient>
+    <!-- Brick repeat pattern -->
+    <pattern id="brick" width="44" height="18" patternUnits="userSpaceOnUse">
+      <rect width="44" height="18" fill="#BE7258"/>
+      <rect x="1" y="1" width="19" height="7.5" rx="0.5" fill="#C88068" opacity="0.88"/>
+      <rect x="23" y="1" width="20" height="7.5" rx="0.5" fill="#B86A50" opacity="0.88"/>
+      <rect x="12" y="10" width="20" height="7.5" rx="0.5" fill="#C27860" opacity="0.85"/>
+      <rect x="34" y="10" width="10" height="7.5" rx="0.5" fill="#B87255" opacity="0.85"/>
+      <rect x="0" y="10" width="10" height="7.5" rx="0.5" fill="#B87255" opacity="0.85"/>
+      <line x1="0" y1="9" x2="44" y2="9" stroke="#DEC8A8" stroke-width="0.7" opacity="0.55"/>
+      <line x1="22" y1="0" x2="22" y2="9" stroke="#DEC8A8" stroke-width="0.7" opacity="0.55"/>
+      <line x1="11" y1="9" x2="11" y2="18" stroke="#DEC8A8" stroke-width="0.7" opacity="0.55"/>
+      <line x1="33" y1="9" x2="33" y2="18" stroke="#DEC8A8" stroke-width="0.7" opacity="0.55"/>
+    </pattern>
+  </defs>
+
+  <!-- ══ SKY ══ -->
+  <rect width="900" height="620" fill="url(#sky)"/>
+  <!-- Soft cloud washes -->
+  <ellipse cx="190" cy="90" rx="140" ry="40" fill="rgba(255,255,255,0.38)" filter="url(#b)"/>
+  <ellipse cx="160" cy="82" rx="90" ry="28" fill="rgba(255,255,255,0.30)"/>
+  <ellipse cx="650" cy="72" rx="130" ry="38" fill="rgba(255,255,255,0.35)" filter="url(#b)"/>
+  <ellipse cx="680" cy="65" rx="80" ry="24" fill="rgba(255,255,255,0.28)"/>
+  <ellipse cx="430" cy="55" rx="60" ry="18" fill="rgba(255,255,255,0.22)"/>
+
+  <!-- ══ GROUND ══ -->
+  <rect x="0" y="450" width="900" height="170" fill="url(#gnd)" opacity="0.88"/>
+  <!-- lawn bleed upward -->
+  <ellipse cx="450" cy="450" rx="430" ry="55" fill="#8EA872" opacity="0.35" filter="url(#b)"/>
+  <!-- Stone/brick forecourt path -->
+  <path d="M340,620 Q360,510 410,478 L490,478 Q540,510 560,620Z" fill="#D0BEA0" opacity="0.6"/>
+  <line x1="450" y1="478" x2="450" y2="620" stroke="#C0AE90" stroke-width="1" opacity="0.5"/>
+
+  <!-- ══ LEFT WING ══ -->
+  <rect x="98" y="278" width="178" height="200" fill="url(#brick)" opacity="0.85" filter="url(#p)"/>
+  <rect x="96" y="262" width="182" height="20" fill="url(#st)" opacity="0.92"/>
+  <!-- left wing windows row 1 (arched) -->
+  <rect x="118" y="296" width="44" height="60" rx="22" fill="none" stroke="#E0D0B0" stroke-width="2.5"/>
+  <rect x="118" y="296" width="44" height="44" rx="22" fill="#6888A0" opacity="0.38"/>
+  <rect x="172" y="296" width="44" height="60" rx="22" fill="none" stroke="#E0D0B0" stroke-width="2.5"/>
+  <rect x="172" y="296" width="44" height="44" rx="22" fill="#6888A0" opacity="0.38"/>
+  <rect x="226" y="296" width="34" height="60" rx="17" fill="none" stroke="#E0D0B0" stroke-width="2"/>
+  <rect x="226" y="296" width="34" height="34" rx="17" fill="#6888A0" opacity="0.35"/>
+  <!-- left wing windows row 2 -->
+  <rect x="118" y="378" width="44" height="52" rx="2" fill="none" stroke="#E0D0B0" stroke-width="2.5"/>
+  <rect x="118" y="378" width="44" height="52" rx="2" fill="#5878A0" opacity="0.28"/>
+  <line x1="140" y1="378" x2="140" y2="430" stroke="#D0BEA0" stroke-width="1.2" opacity="0.6"/>
+  <rect x="172" y="378" width="44" height="52" rx="2" fill="none" stroke="#E0D0B0" stroke-width="2.5"/>
+  <rect x="172" y="378" width="44" height="52" rx="2" fill="#5878A0" opacity="0.28"/>
+  <line x1="194" y1="378" x2="194" y2="430" stroke="#D0BEA0" stroke-width="1.2" opacity="0.6"/>
+
+  <!-- ══ RIGHT WING ══ -->
+  <rect x="624" y="278" width="178" height="200" fill="url(#brick)" opacity="0.85" filter="url(#p)"/>
+  <rect x="622" y="262" width="182" height="20" fill="url(#st)" opacity="0.92"/>
+  <!-- right wing windows row 1 -->
+  <rect x="640" y="296" width="34" height="60" rx="17" fill="none" stroke="#E0D0B0" stroke-width="2"/>
+  <rect x="640" y="296" width="34" height="34" rx="17" fill="#6888A0" opacity="0.35"/>
+  <rect x="686" y="296" width="44" height="60" rx="22" fill="none" stroke="#E0D0B0" stroke-width="2.5"/>
+  <rect x="686" y="296" width="44" height="44" rx="22" fill="#6888A0" opacity="0.38"/>
+  <rect x="740" y="296" width="44" height="60" rx="22" fill="none" stroke="#E0D0B0" stroke-width="2.5"/>
+  <rect x="740" y="296" width="44" height="44" rx="22" fill="#6888A0" opacity="0.38"/>
+  <!-- right wing windows row 2 -->
+  <rect x="640" y="378" width="44" height="52" rx="2" fill="none" stroke="#E0D0B0" stroke-width="2.5"/>
+  <rect x="640" y="378" width="44" height="52" rx="2" fill="#5878A0" opacity="0.28"/>
+  <line x1="662" y1="378" x2="662" y2="430" stroke="#D0BEA0" stroke-width="1.2" opacity="0.6"/>
+  <rect x="696" y="378" width="44" height="52" rx="2" fill="none" stroke="#E0D0B0" stroke-width="2.5"/>
+  <rect x="696" y="378" width="44" height="52" rx="2" fill="#5878A0" opacity="0.28"/>
+  <line x1="718" y1="378" x2="718" y2="430" stroke="#D0BEA0" stroke-width="1.2" opacity="0.6"/>
+
+  <!-- ══ MAIN CENTRAL BUILDING ══ -->
+  <rect x="220" y="220" width="460" height="258" fill="url(#brick)" opacity="0.92" filter="url(#p)"/>
+  <!-- Base cornice -->
+  <rect x="214" y="214" width="472" height="20" fill="url(#st)" opacity="0.96"/>
+  <rect x="214" y="465" width="472" height="14" fill="url(#st)" opacity="0.92"/>
+  <!-- Mid string-course -->
+  <rect x="220" y="335" width="460" height="8" fill="url(#st)" opacity="0.7"/>
+  <!-- Pilasters at edges of main block -->
+  <rect x="220" y="220" width="20" height="258" fill="#E8D8BC" opacity="0.65"/>
+  <rect x="660" y="220" width="20" height="258" fill="#E8D8BC" opacity="0.65"/>
+
+  <!-- ══ CENTRAL GABLE / PEDIMENT ══ -->
+  <!-- Background triangle -->
+  <polygon points="350,140 550,140 620,220 280,220" fill="url(#st)" opacity="0.93" filter="url(#p)"/>
+  <!-- Brick infill in gable -->
+  <polygon points="374,158 526,158 575,214 325,214" fill="url(#brick)" opacity="0.65"/>
+  <!-- Horizontal band at pediment base -->
+  <rect x="278" y="212" width="344" height="14" fill="url(#st)" opacity="0.95"/>
+  <!-- Central arched window in gable -->
+  <path d="M430,168 L430,194 Q430,206 450,206 Q470,206 470,194 L470,168Z" fill="none" stroke="#D8C8A4" stroke-width="2.5"/>
+  <path d="M430,178 L430,194 Q430,206 450,206 Q470,206 470,194 L470,178 Q450,168 430,178Z" fill="#7090A8" opacity="0.42"/>
+  <!-- Accent keystone -->
+  <polygon points="450,168 458,176 450,184 442,176" fill="#D8C8A4" opacity="0.8"/>
+  <!-- Finial / crown at top -->
+  <rect x="444" y="126" width="12" height="18" fill="#D8C8A4" opacity="0.88"/>
+  <polygon points="450,114 458,128 442,128" fill="#C4A87A" opacity="0.9"/>
+  <circle cx="450" cy="112" r="6" fill="#C4A87A"/>
+  <!-- Side gable ornaments -->
+  <circle cx="280" cy="218" r="7" fill="#D8C8A4" opacity="0.8"/>
+  <circle cx="620" cy="218" r="7" fill="#D8C8A4" opacity="0.8"/>
+
+  <!-- ══ PORTICO / ENTRANCE ══ -->
+  <!-- Platform steps -->
+  <rect x="348" y="460" width="204" height="14" fill="#E0D0B0" opacity="0.92"/>
+  <rect x="358" y="470" width="184" height="9" fill="#D4C2A0" opacity="0.85"/>
+  <rect x="370" y="476" width="160" height="6" fill="#C8B890" opacity="0.8"/>
+  <!-- 4 columns -->
+  <rect x="360" y="370" width="14" height="96" fill="#F0E4CC" opacity="0.95"/>
+  <rect x="360" y="364" width="14" height="10" fill="#D8C8A4"/><!-- cap -->
+  <rect x="395" y="370" width="12" height="96" fill="#EAD8BC" opacity="0.90"/>
+  <rect x="395" y="364" width="12" height="10" fill="#D8C8A4"/>
+  <rect x="493" y="370" width="12" height="96" fill="#EAD8BC" opacity="0.90"/>
+  <rect x="493" y="364" width="12" height="10" fill="#D8C8A4"/>
+  <rect x="526" y="370" width="14" height="96" fill="#F0E4CC" opacity="0.95"/>
+  <rect x="526" y="364" width="14" height="10" fill="#D8C8A4"/>
+  <!-- Portico entablature / header -->
+  <rect x="354" y="356" width="192" height="16" fill="#EAD8BC" opacity="0.96"/>
+  <rect x="354" y="352" width="192" height="8" fill="#D8C8A4" opacity="0.92"/>
+  <!-- Arched doorway -->
+  <path d="M398,460 L398,398 Q398,370 450,370 Q502,370 502,398 L502,460Z" fill="url(#brick)" opacity="0.72"/>
+  <path d="M398,405 Q398,378 450,378 Q502,378 502,405" fill="none" stroke="#E0D0B0" stroke-width="3"/>
+  <!-- Transom light -->
+  <path d="M402,403 Q402,382 450,382 Q498,382 498,403Z" fill="#88A8B8" opacity="0.40"/>
+  <path d="M402,403 Q402,382 450,382 Q498,382 498,403Z" fill="none" stroke="#D8C8A4" stroke-width="1.5"/>
+  <!-- Door panels -->
+  <rect x="410" y="403" width="36" height="57" rx="1" fill="#5A4030" opacity="0.88"/>
+  <rect x="412" y="405" width="15" height="22" rx="0.5" fill="#6A5040" opacity="0.7"/>
+  <rect x="429" y="405" width="15" height="22" rx="0.5" fill="#6A5040" opacity="0.7"/>
+  <rect x="412" y="430" width="32" height="28" rx="0.5" fill="#645038" opacity="0.6"/>
+  <rect x="454" y="403" width="36" height="57" rx="1" fill="#5A4030" opacity="0.88"/>
+  <rect x="456" y="405" width="15" height="22" rx="0.5" fill="#6A5040" opacity="0.7"/>
+  <rect x="473" y="405" width="15" height="22" rx="0.5" fill="#6A5040" opacity="0.7"/>
+  <rect x="456" y="430" width="32" height="28" rx="0.5" fill="#645038" opacity="0.6"/>
+  <!-- Door handles -->
+  <circle cx="446" cy="432" r="3" fill="#C4A87A" opacity="0.9"/>
+  <circle cx="454" cy="432" r="3" fill="#C4A87A" opacity="0.9"/>
+
+  <!-- ══ MAIN WINDOWS — upper row (arched) ══ -->
+  <rect x="238" y="236" width="50" height="72" rx="25" fill="none" stroke="#DDD0B0" stroke-width="2.5"/>
+  <rect x="238" y="236" width="50" height="50" rx="25" fill="#7090A0" opacity="0.36"/>
+  <rect x="240" y="236" width="46" height="48" rx="23" fill="none" stroke="#C8B890" stroke-width="0.8" opacity="0.65"/>
+
+  <rect x="302" y="236" width="50" height="72" rx="25" fill="none" stroke="#DDD0B0" stroke-width="2.5"/>
+  <rect x="302" y="236" width="50" height="50" rx="25" fill="#7090A0" opacity="0.36"/>
+  <rect x="304" y="236" width="46" height="48" rx="23" fill="none" stroke="#C8B890" stroke-width="0.8" opacity="0.65"/>
+
+  <rect x="548" y="236" width="50" height="72" rx="25" fill="none" stroke="#DDD0B0" stroke-width="2.5"/>
+  <rect x="548" y="236" width="50" height="50" rx="25" fill="#7090A0" opacity="0.36"/>
+  <rect x="550" y="236" width="46" height="48" rx="23" fill="none" stroke="#C8B890" stroke-width="0.8" opacity="0.65"/>
+
+  <rect x="612" y="236" width="50" height="72" rx="25" fill="none" stroke="#DDD0B0" stroke-width="2.5"/>
+  <rect x="612" y="236" width="50" height="50" rx="25" fill="#7090A0" opacity="0.36"/>
+  <rect x="614" y="236" width="46" height="48" rx="23" fill="none" stroke="#C8B890" stroke-width="0.8" opacity="0.65"/>
+
+  <!-- ══ MAIN WINDOWS — lower row ══ -->
+  <rect x="238" y="348" width="50" height="65" rx="2" fill="none" stroke="#DDD0B0" stroke-width="2.5"/>
+  <rect x="238" y="348" width="50" height="65" rx="2" fill="#5878A0" opacity="0.28"/>
+  <line x1="263" y1="348" x2="263" y2="413" stroke="#C8B890" stroke-width="1.2" opacity="0.6"/>
+
+  <rect x="302" y="348" width="50" height="65" rx="2" fill="none" stroke="#DDD0B0" stroke-width="2.5"/>
+  <rect x="302" y="348" width="50" height="65" rx="2" fill="#5878A0" opacity="0.28"/>
+  <line x1="327" y1="348" x2="327" y2="413" stroke="#C8B890" stroke-width="1.2" opacity="0.6"/>
+
+  <rect x="548" y="348" width="50" height="65" rx="2" fill="none" stroke="#DDD0B0" stroke-width="2.5"/>
+  <rect x="548" y="348" width="50" height="65" rx="2" fill="#5878A0" opacity="0.28"/>
+  <line x1="573" y1="348" x2="573" y2="413" stroke="#C8B890" stroke-width="1.2" opacity="0.6"/>
+
+  <rect x="612" y="348" width="50" height="65" rx="2" fill="none" stroke="#DDD0B0" stroke-width="2.5"/>
+  <rect x="612" y="348" width="50" height="65" rx="2" fill="#5878A0" opacity="0.28"/>
+  <line x1="637" y1="348" x2="637" y2="413" stroke="#C8B890" stroke-width="1.2" opacity="0.6"/>
+
+  <!-- ══ LANDSCAPE — LEFT TREES ══ -->
+  <ellipse cx="60" cy="340" rx="60" ry="90" fill="#80986A" opacity="0.40" filter="url(#p)"/>
+  <ellipse cx="40" cy="310" rx="42" ry="66" fill="#6A8858" opacity="0.44" filter="url(#p)"/>
+  <ellipse cx="82" cy="360" rx="48" ry="72" fill="#729060" opacity="0.38" filter="url(#p)"/>
+  <rect x="56" y="400" width="9" height="60" fill="#6A5238" opacity="0.48"/>
+  <rect x="35" y="365" width="8" height="78" fill="#5A4228" opacity="0.42"/>
+  <!-- Left hedges near building -->
+  <ellipse cx="108" cy="468" rx="28" ry="16" fill="#8A9E68" opacity="0.58" filter="url(#p)"/>
+  <ellipse cx="155" cy="462" rx="22" ry="13" fill="#7E9260" opacity="0.52" filter="url(#p)"/>
+  <ellipse cx="198" cy="458" rx="18" ry="12" fill="#889A65" opacity="0.50" filter="url(#p)"/>
+
+  <!-- ══ LANDSCAPE — RIGHT TREES ══ -->
+  <ellipse cx="840" cy="340" rx="60" ry="90" fill="#80986A" opacity="0.40" filter="url(#p)"/>
+  <ellipse cx="860" cy="310" rx="42" ry="66" fill="#6A8858" opacity="0.44" filter="url(#p)"/>
+  <ellipse cx="818" cy="360" rx="48" ry="72" fill="#729060" opacity="0.38" filter="url(#p)"/>
+  <rect x="835" y="400" width="9" height="60" fill="#6A5238" opacity="0.48"/>
+  <rect x="857" y="365" width="8" height="78" fill="#5A4228" opacity="0.42"/>
+  <!-- Right hedges near building -->
+  <ellipse cx="792" cy="468" rx="28" ry="16" fill="#8A9E68" opacity="0.58" filter="url(#p)"/>
+  <ellipse cx="745" cy="462" rx="22" ry="13" fill="#7E9260" opacity="0.52" filter="url(#p)"/>
+  <ellipse cx="702" cy="458" rx="18" ry="12" fill="#889A65" opacity="0.50" filter="url(#p)"/>
+
+  <!-- Entrance shrubs -->
+  <ellipse cx="358" cy="472" rx="26" ry="14" fill="#8A9E68" opacity="0.55" filter="url(#p)"/>
+  <ellipse cx="542" cy="472" rx="26" ry="14" fill="#8A9E68" opacity="0.55" filter="url(#p)"/>
+
+  <!-- ══ FOREGROUND LAWN WASH ══ -->
+  <ellipse cx="450" cy="548" rx="400" ry="62" fill="#8EA872" opacity="0.22" filter="url(#b)"/>
+
+  <!-- ══ WATERCOLOR BLEEDS + VIGNETTE ══ -->
+  <rect width="900" height="620" fill="url(#vig)"/>
+  <rect width="900" height="620" fill="url(#bl-tl)"/>
+  <rect width="900" height="620" fill="url(#bl-tr)"/>
+  <rect width="900" height="620" fill="url(#bl-bl)"/>
+  <rect width="900" height="620" fill="url(#bl-br)"/>
+  <!-- Top sky fade -->
+  <rect x="0" y="0" width="900" height="130" fill="rgba(250,247,240,0.28)"/>
+  <!-- Warm overall tint -->
+  <rect width="900" height="620" fill="rgba(255,245,228,0.10)"/>
+</svg>
