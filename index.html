@@ -749,7 +749,7 @@
     .env-stage {
         position: relative;
         width: 500px;
-        height: 820px;
+        height: 920px;
         overflow: hidden;
         flex-shrink: 0;
     }
@@ -769,96 +769,105 @@
         transform: translateX(-50%) translateY(-310px);
     }
 
-    /* Full embroidery border overlay */
-    .inv-embroidery {
-        position: absolute; inset: 0; pointer-events: none; z-index: 5;
-        overflow: visible;
+    /* ── Baroque border overlay (embossed cream look) ── */
+    .inv-border-svg {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        pointer-events: none; z-index: 5; overflow: visible;
     }
 
-    /* Corner ornaments */
-    .inv-corner {
-        position: absolute; width: 72px; height: 72px;
-        pointer-events: none; z-index: 6;
+    /* ── White rose spray — real photo cutouts (overflow card corners) ── */
+    .inv-rose-spray {
+        position: absolute; pointer-events: none; z-index: 8;
+        height: auto;
+        filter: drop-shadow(0 8px 16px rgba(58,36,16,0.18));
     }
-    .inv-corner--tl { top: 0; left: 0; }
-    .inv-corner--tr { top: 0; right: 0; transform: scaleX(-1); }
-    .inv-corner--bl { bottom: 0; left: 0; transform: scaleY(-1); }
-    .inv-corner--br { bottom: 0; right: 0; transform: scale(-1,-1); }
+    .inv-rose-spray--tr {
+        top: -16px; right: -54px;
+        width: 250px;
+        transform: rotate(180deg);
+    }
+    .inv-rose-spray--bl {
+        bottom: 16px; left: -40px;
+        width: 178px;
+    }
 
-    /* Edge mid-ornament */
-    .inv-mid-ornament {
-        position: absolute; pointer-events: none; z-index: 6;
-        width: 32px; height: 32px;
+    /* ── White rose clusters on envelope body ── */
+    .env-rose {
+        position: absolute; pointer-events: none; z-index: 4;
+        height: auto;
+        filter: drop-shadow(0 6px 14px rgba(58,36,16,0.20));
     }
-    .inv-mid-ornament--t { top: -2px; left: 50%; transform: translateX(-50%); }
-    .inv-mid-ornament--b { bottom: -2px; left: 50%; transform: translateX(-50%); }
+    .env-rose--l {
+        top: -64px; left: -22px;
+        width: 162px;
+    }
+    .env-rose--r {
+        top: -56px; right: -16px;
+        width: 142px;
+        transform: scaleX(-1);
+    }
+
+    /* ── Gold monogram at top of card ── */
+    .inv-monogram {
+        position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+        z-index: 7; pointer-events: none;
+    }
 
     /* Card text content */
     .inv-card-body {
-        padding: 52px 36px 40px;
+        padding: 128px 44px 40px;
         display: flex; flex-direction: column; align-items: center;
-        gap: 5px; position: relative; z-index: 2;
+        gap: 4px; position: relative; z-index: 2;
     }
     .inv-cordially {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 18px; font-weight: 300; font-style: italic;
-        color: var(--text-muted); letter-spacing: 0.5px; line-height: 1.5;
+        font-size: 16px; font-weight: 300; font-style: italic;
+        color: var(--text-muted); letter-spacing: 0.5px; line-height: 1.6;
     }
     .inv-to {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 18px; font-weight: 300; font-style: italic;
-        color: var(--text-muted); letter-spacing: 0.5px;
-        margin-bottom: 6px;
+        font-size: 16px; font-weight: 300; font-style: italic;
+        color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 4px;
     }
     .inv-name {
         font-family: 'Great Vibes', cursive;
-        font-size: 48px; color: var(--brown); line-height: 1.1;
+        font-size: 52px; color: var(--gold-dk); line-height: 1.1;
     }
     .inv-amp {
         font-family: 'Great Vibes', cursive;
-        font-size: 36px; color: var(--gold); line-height: 1;
-        display: block; margin: 2px 0;
+        font-size: 38px; color: var(--gold); line-height: 1;
+        display: block; margin: 0;
     }
     .inv-rule {
-        width: 130px; height: 1px; margin: 10px 0 8px;
+        width: 120px; height: 1px; margin: 8px 0 6px;
         background: linear-gradient(to right, transparent, var(--beige-dk), transparent);
     }
     .inv-date-txt {
         font-family: 'Raleway', sans-serif;
-        font-size: 11px; font-weight: 400;
-        letter-spacing: 4px; text-transform: uppercase;
-        color: var(--gold); margin-top: 4px;
+        font-size: 10px; font-weight: 500;
+        letter-spacing: 5px; text-transform: uppercase;
+        color: var(--text); margin-top: 2px;
+    }
+    .inv-time-txt {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 22px; font-weight: 300;
+        color: var(--text-muted); letter-spacing: 2px; margin-top: 2px;
+    }
+    .inv-blessing {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 13px; font-weight: 300; font-style: italic;
+        color: var(--text-muted); line-height: 1.8; text-align: center;
+        margin-top: 8px; max-width: 260px;
     }
     .inv-vname {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 20px; font-weight: 400;
-        color: var(--text); letter-spacing: 1px; margin-top: 4px;
+        font-size: 15px; font-weight: 500; letter-spacing: 1px;
+        color: var(--text); text-align: center;
     }
     .inv-vaddr {
         font-family: 'Raleway', sans-serif;
-        font-size: 9px; font-weight: 300;
-        letter-spacing: 3px; text-transform: uppercase;
-        color: var(--text-muted); line-height: 2;
-    }
-    .inv-timing-wrap {
-        display: flex; align-items: center; gap: 14px; margin-top: 8px;
-    }
-    .inv-timing-item {
-        display: flex; flex-direction: column; align-items: center; gap: 2px;
-    }
-    .inv-timing-label {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 12px; font-weight: 400; font-style: italic;
-        color: var(--text-muted); letter-spacing: 0.5px;
-    }
-    .inv-timing-time {
-        font-family: 'Raleway', sans-serif;
-        font-size: 9px; font-weight: 500;
-        letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
-    }
-    .inv-timing-divider {
-        width: 1px; height: 28px;
-        background: linear-gradient(to bottom, transparent, var(--beige-dk), transparent);
+        font-size: 9.5px; font-weight: 400; letter-spacing: 2px;
+        color: var(--text-muted); text-align: center; text-transform: uppercase;
     }
 
     /* ---- Envelope body (sits on top of card, z=3) ---- */
@@ -960,7 +969,7 @@
         .env-stage {
             transform: scale(0.67);
             transform-origin: top center;
-            margin-bottom: -271px; /* 820*(1-0.67) ≈ 271px recovered */
+            margin-bottom: -304px; /* 920*(1-0.67) ≈ 304px recovered */
         }
     }
 
@@ -1012,7 +1021,6 @@
     <a href="#home" class="nav-brand">I & S</a>
     <ul class="nav-menu" id="navMenu">
         <li><a href="#invitation">Invitation</a></li>
-        <li><a href="#events">Events</a></li>
         <li><a href="#venue">Venue</a></li>
         <li><a href="#rsvp">RSVP</a></li>
     </ul>
@@ -1208,204 +1216,78 @@
             <!-- ===== INVITATION CARD ===== -->
             <div class="inv-card" id="invCard">
 
-                <!-- ── Ornate embroidery corner — top-left ── -->
-                <svg class="inv-corner inv-corner--tl" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <!-- Outer L-bracket -->
-                    <path d="M6,66 L6,18 Q6,6 18,6 L66,6" stroke="#C4A87A" stroke-width="1.3" stroke-linecap="round"/>
-                    <!-- Inner L-bracket dashed -->
-                    <path d="M13,66 L13,18 Q13,13 18,13 L66,13" stroke="#D9C4A8" stroke-width="0.55" stroke-dasharray="4 5" opacity="0.9"/>
-                    <!-- Vine scrolls off the bracket -->
-                    <path d="M6,42 Q18,42 20,32 Q22,22 30,22" stroke="#C4A87A" stroke-width="0.55" fill="none" opacity="0.5"/>
-                    <path d="M42,6 Q42,18 32,20 Q22,22 22,30" stroke="#C4A87A" stroke-width="0.55" fill="none" opacity="0.5"/>
-                    <!-- Small leaf at vine ends -->
-                    <path d="M29,22 Q22,14 32,13 Q33,22 29,22Z" fill="#9BAF86" opacity="0.55"/>
-                    <path d="M22,29 Q14,22 13,32 Q22,33 22,29Z" fill="#9BAF86" opacity="0.55"/>
-                    <!-- Diamond chain dots along top horizontal bracket -->
-                    <rect x="27" y="4.2" width="4" height="4" transform="rotate(45,29,6)" fill="#C4A87A" opacity="0.55"/>
-                    <circle cx="29" cy="6" r="0.9" fill="#FAF7F0"/>
-                    <rect x="39" y="4.2" width="4" height="4" transform="rotate(45,41,6)" fill="#C4A87A" opacity="0.45"/>
-                    <circle cx="41" cy="6" r="0.9" fill="#FAF7F0"/>
-                    <rect x="51" y="4.2" width="4" height="4" transform="rotate(45,53,6)" fill="#C4A87A" opacity="0.55"/>
-                    <circle cx="53" cy="6" r="0.9" fill="#FAF7F0"/>
-                    <!-- Diamond chain dots along left vertical bracket -->
-                    <rect x="4.2" y="27" width="4" height="4" transform="rotate(45,6,29)" fill="#C4A87A" opacity="0.55"/>
-                    <circle cx="6" cy="29" r="0.9" fill="#FAF7F0"/>
-                    <rect x="4.2" y="39" width="4" height="4" transform="rotate(45,6,41)" fill="#C4A87A" opacity="0.45"/>
-                    <circle cx="6" cy="41" r="0.9" fill="#FAF7F0"/>
-                    <rect x="4.2" y="51" width="4" height="4" transform="rotate(45,6,53)" fill="#C4A87A" opacity="0.55"/>
-                    <circle cx="6" cy="53" r="0.9" fill="#FAF7F0"/>
-                    <!-- Corner medallion -->
-                    <circle cx="18" cy="18" r="15" fill="rgba(250,247,240,0.95)" stroke="#C4A87A" stroke-width="1.1"/>
-                    <circle cx="18" cy="18" r="9.5" fill="rgba(196,168,122,0.12)" stroke="#C4A87A" stroke-width="0.6"/>
-                    <!-- 8-petal rose -->
-                    <g transform="translate(18,18)">
-                        <ellipse rx="2.2" ry="7" fill="#C4A87A" opacity="0.72"/>
-                        <ellipse rx="2.2" ry="7" transform="rotate(45)" fill="#B89060" opacity="0.65"/>
-                        <ellipse rx="2.2" ry="7" transform="rotate(90)" fill="#C4A87A" opacity="0.72"/>
-                        <ellipse rx="2.2" ry="7" transform="rotate(135)" fill="#B89060" opacity="0.65"/>
-                        <circle r="3.5" fill="#C4A87A"/>
-                        <circle r="1.8" fill="#F8E080"/>
-                    </g>
-                    <!-- 8 tiny dots around medallion outer edge -->
-                    <circle cx="18" cy="4"  r="1.1" fill="#C4A87A" opacity="0.5"/>
-                    <circle cx="27.6" cy="7.4" r="1" fill="#C4A87A" opacity="0.4"/>
-                    <circle cx="31.1" cy="18" r="1.1" fill="#C4A87A" opacity="0.5"/>
-                    <circle cx="27.6" cy="28.6" r="1" fill="#C4A87A" opacity="0.4"/>
-                    <circle cx="18" cy="32" r="1.1" fill="#C4A87A" opacity="0.5"/>
-                    <circle cx="8.4"  cy="28.6" r="1" fill="#C4A87A" opacity="0.4"/>
-                    <circle cx="4.9"  cy="18" r="1.1" fill="#C4A87A" opacity="0.5"/>
-                    <circle cx="8.4"  cy="7.4" r="1" fill="#C4A87A" opacity="0.4"/>
-                </svg>
-                <!-- top-right mirrors tl -->
-                <svg class="inv-corner inv-corner--tr" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M6,66 L6,18 Q6,6 18,6 L66,6" stroke="#C4A87A" stroke-width="1.3" stroke-linecap="round"/>
-                    <path d="M13,66 L13,18 Q13,13 18,13 L66,13" stroke="#D9C4A8" stroke-width="0.55" stroke-dasharray="4 5" opacity="0.9"/>
-                    <path d="M6,42 Q18,42 20,32 Q22,22 30,22" stroke="#C4A87A" stroke-width="0.55" fill="none" opacity="0.5"/>
-                    <path d="M42,6 Q42,18 32,20 Q22,22 22,30" stroke="#C4A87A" stroke-width="0.55" fill="none" opacity="0.5"/>
-                    <path d="M29,22 Q22,14 32,13 Q33,22 29,22Z" fill="#9BAF86" opacity="0.55"/>
-                    <path d="M22,29 Q14,22 13,32 Q22,33 22,29Z" fill="#9BAF86" opacity="0.55"/>
-                    <rect x="27" y="4.2" width="4" height="4" transform="rotate(45,29,6)" fill="#C4A87A" opacity="0.55"/><circle cx="29" cy="6" r="0.9" fill="#FAF7F0"/>
-                    <rect x="39" y="4.2" width="4" height="4" transform="rotate(45,41,6)" fill="#C4A87A" opacity="0.45"/><circle cx="41" cy="6" r="0.9" fill="#FAF7F0"/>
-                    <rect x="51" y="4.2" width="4" height="4" transform="rotate(45,53,6)" fill="#C4A87A" opacity="0.55"/><circle cx="53" cy="6" r="0.9" fill="#FAF7F0"/>
-                    <rect x="4.2" y="27" width="4" height="4" transform="rotate(45,6,29)" fill="#C4A87A" opacity="0.55"/><circle cx="6" cy="29" r="0.9" fill="#FAF7F0"/>
-                    <rect x="4.2" y="39" width="4" height="4" transform="rotate(45,6,41)" fill="#C4A87A" opacity="0.45"/><circle cx="6" cy="41" r="0.9" fill="#FAF7F0"/>
-                    <rect x="4.2" y="51" width="4" height="4" transform="rotate(45,6,53)" fill="#C4A87A" opacity="0.55"/><circle cx="6" cy="53" r="0.9" fill="#FAF7F0"/>
-                    <circle cx="18" cy="18" r="15" fill="rgba(250,247,240,0.95)" stroke="#C4A87A" stroke-width="1.1"/>
-                    <circle cx="18" cy="18" r="9.5" fill="rgba(196,168,122,0.12)" stroke="#C4A87A" stroke-width="0.6"/>
-                    <g transform="translate(18,18)"><ellipse rx="2.2" ry="7" fill="#C4A87A" opacity="0.72"/><ellipse rx="2.2" ry="7" transform="rotate(45)" fill="#B89060" opacity="0.65"/><ellipse rx="2.2" ry="7" transform="rotate(90)" fill="#C4A87A" opacity="0.72"/><ellipse rx="2.2" ry="7" transform="rotate(135)" fill="#B89060" opacity="0.65"/><circle r="3.5" fill="#C4A87A"/><circle r="1.8" fill="#F8E080"/></g>
-                    <circle cx="18" cy="4" r="1.1" fill="#C4A87A" opacity="0.5"/><circle cx="27.6" cy="7.4" r="1" fill="#C4A87A" opacity="0.4"/><circle cx="31.1" cy="18" r="1.1" fill="#C4A87A" opacity="0.5"/><circle cx="27.6" cy="28.6" r="1" fill="#C4A87A" opacity="0.4"/><circle cx="18" cy="32" r="1.1" fill="#C4A87A" opacity="0.5"/><circle cx="8.4" cy="28.6" r="1" fill="#C4A87A" opacity="0.4"/><circle cx="4.9" cy="18" r="1.1" fill="#C4A87A" opacity="0.5"/><circle cx="8.4" cy="7.4" r="1" fill="#C4A87A" opacity="0.4"/>
-                </svg>
-                <!-- bottom-left -->
-                <svg class="inv-corner inv-corner--bl" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M6,66 L6,18 Q6,6 18,6 L66,6" stroke="#C4A87A" stroke-width="1.3" stroke-linecap="round"/>
-                    <path d="M13,66 L13,18 Q13,13 18,13 L66,13" stroke="#D9C4A8" stroke-width="0.55" stroke-dasharray="4 5" opacity="0.9"/>
-                    <path d="M6,42 Q18,42 20,32 Q22,22 30,22" stroke="#C4A87A" stroke-width="0.55" fill="none" opacity="0.5"/>
-                    <path d="M42,6 Q42,18 32,20 Q22,22 22,30" stroke="#C4A87A" stroke-width="0.55" fill="none" opacity="0.5"/>
-                    <path d="M29,22 Q22,14 32,13 Q33,22 29,22Z" fill="#9BAF86" opacity="0.55"/>
-                    <path d="M22,29 Q14,22 13,32 Q22,33 22,29Z" fill="#9BAF86" opacity="0.55"/>
-                    <rect x="27" y="4.2" width="4" height="4" transform="rotate(45,29,6)" fill="#C4A87A" opacity="0.55"/><circle cx="29" cy="6" r="0.9" fill="#FAF7F0"/>
-                    <rect x="39" y="4.2" width="4" height="4" transform="rotate(45,41,6)" fill="#C4A87A" opacity="0.45"/><circle cx="41" cy="6" r="0.9" fill="#FAF7F0"/>
-                    <rect x="51" y="4.2" width="4" height="4" transform="rotate(45,53,6)" fill="#C4A87A" opacity="0.55"/><circle cx="53" cy="6" r="0.9" fill="#FAF7F0"/>
-                    <rect x="4.2" y="27" width="4" height="4" transform="rotate(45,6,29)" fill="#C4A87A" opacity="0.55"/><circle cx="6" cy="29" r="0.9" fill="#FAF7F0"/>
-                    <rect x="4.2" y="39" width="4" height="4" transform="rotate(45,6,41)" fill="#C4A87A" opacity="0.45"/><circle cx="6" cy="41" r="0.9" fill="#FAF7F0"/>
-                    <rect x="4.2" y="51" width="4" height="4" transform="rotate(45,6,53)" fill="#C4A87A" opacity="0.55"/><circle cx="6" cy="53" r="0.9" fill="#FAF7F0"/>
-                    <circle cx="18" cy="18" r="15" fill="rgba(250,247,240,0.95)" stroke="#C4A87A" stroke-width="1.1"/>
-                    <circle cx="18" cy="18" r="9.5" fill="rgba(196,168,122,0.12)" stroke="#C4A87A" stroke-width="0.6"/>
-                    <g transform="translate(18,18)"><ellipse rx="2.2" ry="7" fill="#C4A87A" opacity="0.72"/><ellipse rx="2.2" ry="7" transform="rotate(45)" fill="#B89060" opacity="0.65"/><ellipse rx="2.2" ry="7" transform="rotate(90)" fill="#C4A87A" opacity="0.72"/><ellipse rx="2.2" ry="7" transform="rotate(135)" fill="#B89060" opacity="0.65"/><circle r="3.5" fill="#C4A87A"/><circle r="1.8" fill="#F8E080"/></g>
-                    <circle cx="18" cy="4" r="1.1" fill="#C4A87A" opacity="0.5"/><circle cx="27.6" cy="7.4" r="1" fill="#C4A87A" opacity="0.4"/><circle cx="31.1" cy="18" r="1.1" fill="#C4A87A" opacity="0.5"/><circle cx="27.6" cy="28.6" r="1" fill="#C4A87A" opacity="0.4"/><circle cx="18" cy="32" r="1.1" fill="#C4A87A" opacity="0.5"/><circle cx="8.4" cy="28.6" r="1" fill="#C4A87A" opacity="0.4"/><circle cx="4.9" cy="18" r="1.1" fill="#C4A87A" opacity="0.5"/><circle cx="8.4" cy="7.4" r="1" fill="#C4A87A" opacity="0.4"/>
-                </svg>
-                <!-- bottom-right -->
-                <svg class="inv-corner inv-corner--br" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M6,66 L6,18 Q6,6 18,6 L66,6" stroke="#C4A87A" stroke-width="1.3" stroke-linecap="round"/>
-                    <path d="M13,66 L13,18 Q13,13 18,13 L66,13" stroke="#D9C4A8" stroke-width="0.55" stroke-dasharray="4 5" opacity="0.9"/>
-                    <path d="M6,42 Q18,42 20,32 Q22,22 30,22" stroke="#C4A87A" stroke-width="0.55" fill="none" opacity="0.5"/>
-                    <path d="M42,6 Q42,18 32,20 Q22,22 22,30" stroke="#C4A87A" stroke-width="0.55" fill="none" opacity="0.5"/>
-                    <path d="M29,22 Q22,14 32,13 Q33,22 29,22Z" fill="#9BAF86" opacity="0.55"/>
-                    <path d="M22,29 Q14,22 13,32 Q22,33 22,29Z" fill="#9BAF86" opacity="0.55"/>
-                    <rect x="27" y="4.2" width="4" height="4" transform="rotate(45,29,6)" fill="#C4A87A" opacity="0.55"/><circle cx="29" cy="6" r="0.9" fill="#FAF7F0"/>
-                    <rect x="39" y="4.2" width="4" height="4" transform="rotate(45,41,6)" fill="#C4A87A" opacity="0.45"/><circle cx="41" cy="6" r="0.9" fill="#FAF7F0"/>
-                    <rect x="51" y="4.2" width="4" height="4" transform="rotate(45,53,6)" fill="#C4A87A" opacity="0.55"/><circle cx="53" cy="6" r="0.9" fill="#FAF7F0"/>
-                    <rect x="4.2" y="27" width="4" height="4" transform="rotate(45,6,29)" fill="#C4A87A" opacity="0.55"/><circle cx="6" cy="29" r="0.9" fill="#FAF7F0"/>
-                    <rect x="4.2" y="39" width="4" height="4" transform="rotate(45,6,41)" fill="#C4A87A" opacity="0.45"/><circle cx="6" cy="41" r="0.9" fill="#FAF7F0"/>
-                    <rect x="4.2" y="51" width="4" height="4" transform="rotate(45,6,53)" fill="#C4A87A" opacity="0.55"/><circle cx="6" cy="53" r="0.9" fill="#FAF7F0"/>
-                    <circle cx="18" cy="18" r="15" fill="rgba(250,247,240,0.95)" stroke="#C4A87A" stroke-width="1.1"/>
-                    <circle cx="18" cy="18" r="9.5" fill="rgba(196,168,122,0.12)" stroke="#C4A87A" stroke-width="0.6"/>
-                    <g transform="translate(18,18)"><ellipse rx="2.2" ry="7" fill="#C4A87A" opacity="0.72"/><ellipse rx="2.2" ry="7" transform="rotate(45)" fill="#B89060" opacity="0.65"/><ellipse rx="2.2" ry="7" transform="rotate(90)" fill="#C4A87A" opacity="0.72"/><ellipse rx="2.2" ry="7" transform="rotate(135)" fill="#B89060" opacity="0.65"/><circle r="3.5" fill="#C4A87A"/><circle r="1.8" fill="#F8E080"/></g>
-                    <circle cx="18" cy="4" r="1.1" fill="#C4A87A" opacity="0.5"/><circle cx="27.6" cy="7.4" r="1" fill="#C4A87A" opacity="0.4"/><circle cx="31.1" cy="18" r="1.1" fill="#C4A87A" opacity="0.5"/><circle cx="27.6" cy="28.6" r="1" fill="#C4A87A" opacity="0.4"/><circle cx="18" cy="32" r="1.1" fill="#C4A87A" opacity="0.5"/><circle cx="8.4" cy="28.6" r="1" fill="#C4A87A" opacity="0.4"/><circle cx="4.9" cy="18" r="1.1" fill="#C4A87A" opacity="0.5"/><circle cx="8.4" cy="7.4" r="1" fill="#C4A87A" opacity="0.4"/>
+                <!-- ── Scalloped baroque frame ── -->
+                <svg class="inv-border-svg" viewBox="0 0 374 530" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <!-- Gold outer border line -->
+                  <rect x="4" y="4" width="366" height="522" rx="2" fill="none" stroke="rgba(184,144,80,0.75)" stroke-width="1.4"/>
+                  <!-- Cream scalloped frame band (evenodd cuts out center) -->
+                  <path fill-rule="evenodd"
+                    fill="rgba(240,235,225,0.50)"
+                    stroke="rgba(184,144,80,0.45)" stroke-width="0.7"
+                    d="M 4 4 H 370 V 526 H 4 Z M 24 24 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 a 5 3 0 0 1 10 0 L 354 24 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 a 3 5 0 0 1 0 10 L 354 506 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 a 5 3 0 0 1 -10 0 L 24 506 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 a 3 5 0 0 1 0 -10 Z"/>
+                  <!-- Corner baroque ornaments -->
+                  <g opacity="0.75">
+                    <path d="M24,24 Q14,14 4,4" stroke="rgba(184,144,80,0.5)" stroke-width="0.8" fill="none"/>
+                    <path d="M350,24 Q360,14 370,4" stroke="rgba(184,144,80,0.5)" stroke-width="0.8" fill="none"/>
+                    <path d="M24,506 Q14,516 4,526" stroke="rgba(184,144,80,0.5)" stroke-width="0.8" fill="none"/>
+                    <path d="M350,506 Q360,516 370,526" stroke="rgba(184,144,80,0.5)" stroke-width="0.8" fill="none"/>
+                  </g>
+                  <!-- Side center diamond accents -->
+                  <rect x="2" y="260" width="5" height="5" transform="rotate(45,4.5,262.5)" fill="rgba(184,144,80,0.55)"/>
+                  <rect x="367" y="260" width="5" height="5" transform="rotate(45,369.5,262.5)" fill="rgba(184,144,80,0.55)"/>
+                  <rect x="184" y="2" width="5" height="5" transform="rotate(45,186.5,4.5)" fill="rgba(184,144,80,0.55)"/>
+                  <rect x="184" y="523" width="5" height="5" transform="rotate(45,186.5,525.5)" fill="rgba(184,144,80,0.55)"/>
                 </svg>
 
-                <!-- ── Top edge mid-ornament ── -->
-                <svg class="inv-mid-ornament inv-mid-ornament--t" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <circle cx="16" cy="16" r="12" fill="rgba(250,247,240,0.95)" stroke="#C4A87A" stroke-width="1"/>
-                    <circle cx="16" cy="16" r="7" fill="rgba(196,168,122,0.15)" stroke="#C4A87A" stroke-width="0.6"/>
-                    <g transform="translate(16,16)">
-                        <ellipse rx="1.6" ry="5" fill="#C4A87A" opacity="0.75"/>
-                        <ellipse rx="1.6" ry="5" transform="rotate(45)" fill="#C4A87A" opacity="0.6"/>
-                        <ellipse rx="1.6" ry="5" transform="rotate(90)" fill="#C4A87A" opacity="0.75"/>
-                        <ellipse rx="1.6" ry="5" transform="rotate(135)" fill="#C4A87A" opacity="0.6"/>
-                        <circle r="2.5" fill="#C4A87A"/><circle r="1.2" fill="#F8E080"/>
-                    </g>
-                </svg>
-                <!-- ── Bottom edge mid-ornament ── -->
-                <svg class="inv-mid-ornament inv-mid-ornament--b" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <circle cx="16" cy="16" r="12" fill="rgba(250,247,240,0.95)" stroke="#C4A87A" stroke-width="1"/>
-                    <circle cx="16" cy="16" r="7" fill="rgba(196,168,122,0.15)" stroke="#C4A87A" stroke-width="0.6"/>
-                    <g transform="translate(16,16)">
-                        <ellipse rx="1.6" ry="5" fill="#C4A87A" opacity="0.75"/>
-                        <ellipse rx="1.6" ry="5" transform="rotate(45)" fill="#C4A87A" opacity="0.6"/>
-                        <ellipse rx="1.6" ry="5" transform="rotate(90)" fill="#C4A87A" opacity="0.75"/>
-                        <ellipse rx="1.6" ry="5" transform="rotate(135)" fill="#C4A87A" opacity="0.6"/>
-                        <circle r="2.5" fill="#C4A87A"/><circle r="1.2" fill="#F8E080"/>
-                    </g>
+                <!-- ── Gold I·S monogram ── -->
+                <svg class="inv-monogram" width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <!-- Outer oval -->
+                  <ellipse cx="50" cy="50" rx="46" ry="46" fill="rgba(250,247,240,0.92)" stroke="#C4A87A" stroke-width="1.4"/>
+                  <ellipse cx="50" cy="50" rx="38" ry="38" fill="none" stroke="rgba(196,168,122,0.45)" stroke-width="0.7"/>
+                  <!-- Cardinal flourishes -->
+                  <path d="M50,4 Q57,12 50,20 Q43,12 50,4Z" fill="#C4A87A" opacity="0.8"/>
+                  <path d="M50,80 Q57,88 50,96 Q43,88 50,80Z" fill="#C4A87A" opacity="0.8"/>
+                  <path d="M4,50 Q12,57 20,50 Q12,43 4,50Z" fill="#C4A87A" opacity="0.8"/>
+                  <path d="M80,50 Q88,57 96,50 Q88,43 80,50Z" fill="#C4A87A" opacity="0.8"/>
+                  <!-- Diagonal diamonds -->
+                  <rect x="29" y="8" width="4.5" height="4.5" transform="rotate(45,31.25,10.25)" fill="#C4A87A" opacity="0.65"/>
+                  <rect x="66" y="8" width="4.5" height="4.5" transform="rotate(45,68.25,10.25)" fill="#C4A87A" opacity="0.65"/>
+                  <rect x="29" y="87" width="4.5" height="4.5" transform="rotate(45,31.25,89.25)" fill="#C4A87A" opacity="0.65"/>
+                  <rect x="66" y="87" width="4.5" height="4.5" transform="rotate(45,68.25,89.25)" fill="#C4A87A" opacity="0.65"/>
+                  <!-- IS lettering -->
+                  <text x="50" y="63" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="34" fill="#9A7840" opacity="0.95">I S</text>
                 </svg>
 
-                <!-- ── Embroidery side-border overlay (outer lines + inner dashed) ── -->
-                <svg class="inv-embroidery" viewBox="0 0 374 530" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <!-- Outer border -->
-                    <rect x="5" y="5" width="364" height="520" fill="none" stroke="#C4A87A" stroke-width="1.4" rx="1"/>
-                    <!-- Inner dashed border -->
-                    <rect x="13" y="13" width="348" height="504" fill="none" stroke="rgba(196,168,122,0.45)" stroke-width="0.7" stroke-dasharray="5 6" rx="0.5"/>
-                    <!-- Third hairline border -->
-                    <rect x="19" y="19" width="336" height="492" fill="none" stroke="rgba(196,168,122,0.22)" stroke-width="0.5" rx="0.5"/>
-                </svg>
+                <!-- ── White rose cascade — top right (real photo) ── -->
+                <img class="inv-rose-spray inv-rose-spray--tr" src="images/rose-corner.png" alt="" aria-hidden="true">
+
+                <!-- ── White rose cascade — bottom left (real photo) ── -->
+                <img class="inv-rose-spray inv-rose-spray--bl" src="images/rose-corner.png" alt="" aria-hidden="true">
 
                 <!-- Card body -->
                 <div class="inv-card-body">
 
-                    <!-- Top botanical sprig -->
-                    <svg width="160" height="52" viewBox="0 0 160 52" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:4px;" aria-hidden="true">
-                        <path d="M80,50 C80,40 80,28 80,8" stroke="#B0A080" stroke-width="0.85" fill="none" opacity="0.5"/>
-                        <path d="M80,30 C64,24 48,16 34,10" stroke="#B0A080" stroke-width="0.65" fill="none" opacity="0.5"/>
-                        <path d="M80,30 C96,24 112,16 126,10" stroke="#B0A080" stroke-width="0.65" fill="none" opacity="0.5"/>
-                        <path d="M33,10 Q24,0 36,-2 Q39,9 33,10Z" fill="#9BAF86" opacity="0.72"/>
-                        <path d="M33,10 Q42,14 44,23 Q35,21 33,10Z" fill="#B2C89E" opacity="0.62"/>
-                        <path d="M127,10 Q136,0 124,-2 Q121,9 127,10Z" fill="#9BAF86" opacity="0.72"/>
-                        <path d="M127,10 Q118,14 116,23 Q125,21 127,10Z" fill="#B2C89E" opacity="0.62"/>
-                        <g transform="translate(80,8)"><ellipse rx="5" ry="8.5" fill="#E8AABB" opacity="0.88"/><ellipse rx="5" ry="8.5" transform="rotate(72)" fill="#DFA0AE" opacity="0.88"/><ellipse rx="5" ry="8.5" transform="rotate(144)" fill="#E8AABB" opacity="0.88"/><ellipse rx="5" ry="8.5" transform="rotate(216)" fill="#DFA0AE" opacity="0.88"/><ellipse rx="5" ry="8.5" transform="rotate(288)" fill="#E8AABB" opacity="0.88"/><circle r="4" fill="#F8DE68"/></g>
-                        <g transform="translate(34,9)"><ellipse rx="3.5" ry="6" fill="#E8A870" opacity="0.85"/><ellipse rx="3.5" ry="6" transform="rotate(72)" fill="#E09868" opacity="0.85"/><ellipse rx="3.5" ry="6" transform="rotate(144)" fill="#E8A870" opacity="0.85"/><ellipse rx="3.5" ry="6" transform="rotate(216)" fill="#E09868" opacity="0.85"/><ellipse rx="3.5" ry="6" transform="rotate(288)" fill="#E8A870" opacity="0.85"/><circle r="2.5" fill="#F8E050"/></g>
-                        <g transform="translate(126,9)"><ellipse rx="3.5" ry="6" fill="#C8A0D5" opacity="0.85"/><ellipse rx="3.5" ry="6" transform="rotate(72)" fill="#C098CC" opacity="0.85"/><ellipse rx="3.5" ry="6" transform="rotate(144)" fill="#C8A0D5" opacity="0.85"/><ellipse rx="3.5" ry="6" transform="rotate(216)" fill="#C098CC" opacity="0.85"/><ellipse rx="3.5" ry="6" transform="rotate(288)" fill="#C8A0D5" opacity="0.85"/><circle r="2.5" fill="#F8D860"/></g>
-                    </svg>
-
                     <p class="inv-cordially">You are cordially invited</p>
                     <p class="inv-to">to the wedding of</p>
 
-                    <p class="inv-name" style="margin-top:6px;">Ishaaq Dada</p>
+                    <p class="inv-name" style="margin-top:10px;">Ishaaq Dada</p>
                     <span class="inv-amp">&amp;</span>
                     <p class="inv-name">Sara Dada</p>
 
                     <div class="inv-rule"></div>
 
-                    <p class="inv-date-txt">Saturday · August 22, 2026</p>
+                    <p class="inv-date-txt">Saturday &nbsp;·&nbsp; August 22, 2026</p>
+                    <p class="inv-time-txt">5:30 PM</p>
 
-                    <div class="inv-rule" style="margin:8px 0 10px;"></div>
+                    <div class="inv-rule" style="margin:10px 0 12px;"></div>
 
                     <p class="inv-vname">Bridgewater Event Center</p>
                     <p class="inv-vaddr">10561 Sawmill Pkwy &nbsp;·&nbsp; Powell, OH 43065</p>
 
-                    <!-- Timing -->
-                    <div class="inv-timing-wrap">
-                        <div class="inv-timing-item">
-                            <span class="inv-timing-label">Nikkah Ceremony</span>
-                            <span class="inv-timing-time">2:00 PM</span>
-                        </div>
-                        <div class="inv-timing-divider"></div>
-                        <div class="inv-timing-item">
-                            <span class="inv-timing-label">Reception</span>
-                            <span class="inv-timing-time">5:30 PM</span>
-                        </div>
-                    </div>
-
-                    <!-- Bottom sprig -->
-                    <svg width="110" height="38" viewBox="0 0 110 38" xmlns="http://www.w3.org/2000/svg" style="margin-top:8px;" aria-hidden="true">
-                        <path d="M55,2 C55,12 55,24 55,36" stroke="#B0A080" stroke-width="0.85" fill="none" opacity="0.5"/>
-                        <path d="M55,16 C44,22 32,28 22,32" stroke="#B0A080" stroke-width="0.65" fill="none" opacity="0.5"/>
-                        <path d="M55,16 C66,22 78,28 88,32" stroke="#B0A080" stroke-width="0.65" fill="none" opacity="0.5"/>
-                        <path d="M21,32 Q13,40 22,39 Q24,32 21,32Z" fill="#9BAF86" opacity="0.68"/>
-                        <path d="M89,32 Q97,40 88,39 Q86,32 89,32Z" fill="#9BAF86" opacity="0.68"/>
-                        <g transform="translate(55,36)"><ellipse rx="3.5" ry="6" fill="#E8AABB" opacity="0.85"/><ellipse rx="3.5" ry="6" transform="rotate(72)" fill="#DFA0AE" opacity="0.85"/><ellipse rx="3.5" ry="6" transform="rotate(144)" fill="#E8AABB" opacity="0.85"/><ellipse rx="3.5" ry="6" transform="rotate(216)" fill="#DFA0AE" opacity="0.85"/><ellipse rx="3.5" ry="6" transform="rotate(288)" fill="#E8AABB" opacity="0.85"/><circle r="2.5" fill="#F8DE68"/></g>
-                        <g transform="translate(22,32)"><ellipse rx="3" ry="5" fill="#E8A870" opacity="0.82"/><ellipse rx="3" ry="5" transform="rotate(72)" fill="#E09868" opacity="0.82"/><ellipse rx="3" ry="5" transform="rotate(144)" fill="#E8A870" opacity="0.82"/><ellipse rx="3" ry="5" transform="rotate(216)" fill="#E09868" opacity="0.82"/><ellipse rx="3" ry="5" transform="rotate(288)" fill="#E8A870" opacity="0.82"/><circle r="2" fill="#F8E050"/></g>
-                        <g transform="translate(88,32)"><ellipse rx="3" ry="5" fill="#D0607A" opacity="0.82"/><ellipse rx="3" ry="5" transform="rotate(72)" fill="#C85870" opacity="0.82"/><ellipse rx="3" ry="5" transform="rotate(144)" fill="#D0607A" opacity="0.82"/><ellipse rx="3" ry="5" transform="rotate(216)" fill="#C85870" opacity="0.82"/><ellipse rx="3" ry="5" transform="rotate(288)" fill="#D0607A" opacity="0.82"/><circle r="2" fill="#F8D860"/></g>
-                    </svg>
+                    <p class="inv-blessing">
+                        We would be honored<br>to have you join us<br>
+                        as we begin this new chapter<br>together
+                    </p>
 
                 </div><!-- /inv-card-body -->
             </div><!-- /inv-card -->
@@ -1419,6 +1301,10 @@
                     <div class="env-bottom"></div>
                 </div>
                 <div class="env-center-mark"></div>
+                <!-- White rose arrangement on envelope — left cluster (real photo) -->
+                <img class="env-rose env-rose--l" src="images/rose-corner.png" alt="" aria-hidden="true">
+                <!-- White rose arrangement on envelope — right cluster (mirrored) -->
+                <img class="env-rose env-rose--r" src="images/rose-corner.png" alt="" aria-hidden="true">
             </div>
 
             <!-- ===== FLAP (triangle that rotates open) ===== -->
@@ -1480,53 +1366,6 @@
 <!-- =============================================
      EVENTS
 ============================================= -->
-<section class="events-section" id="events">
-    <div class="events-header reveal">
-        <span class="eyebrow-tag">Join Us to Celebrate</span>
-        <div class="script-heading">The Wedding Events</div>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;font-weight:300;color:var(--text-muted);margin-top:12px;letter-spacing:0.5px;">Saturday, August 22nd, 2026 &nbsp;·&nbsp; Bridgewater Event Center, Powell, Ohio</p>
-    </div>
-
-    <div class="events-grid">
-        <!-- Nikkah -->
-        <div class="event-card reveal reveal-delay-1">
-            <div class="event-icon">
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 4 C18 4 18 16 18 22 C18 25.3 15.3 28 12 28" stroke="#C4A87A" stroke-width="1" fill="none"/>
-                    <path d="M18 4 C18 4 18 16 18 22 C18 25.3 20.7 28 24 28" stroke="#C4A87A" stroke-width="1" fill="none"/>
-                    <ellipse cx="18" cy="22" rx="6" ry="3" stroke="#C4A87A" stroke-width="0.8" fill="none"/>
-                    <line x1="12" y1="31" x2="24" y2="31" stroke="#C4A87A" stroke-width="0.8"/>
-                    <circle cx="18" cy="4" r="2.5" fill="#C4A87A" opacity="0.7"/>
-                    <path d="M15 8 Q18 6 21 8" stroke="#E8A870" stroke-width="0.7" fill="none" opacity="0.8"/>
-                </svg>
-            </div>
-            <p class="event-date">Saturday · 22 August 2026</p>
-            <h3 class="event-name">Nikkah</h3>
-            <p class="event-time">2:00 PM</p>
-            <p class="event-location">Bridgewater Event Center<br>Powell, Ohio</p>
-            <p class="event-desc">The sacred Islamic marriage contract — a beautiful and intimate ceremony witnessed by family and cherished guests, in which Ishaaq and Sara will be united before God.</p>
-        </div>
-
-        <!-- Reception -->
-        <div class="event-card reveal reveal-delay-2">
-            <div class="event-icon">
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 28 Q18 14 28 28" stroke="#C4A87A" stroke-width="1" fill="none"/>
-                    <path d="M11 24 Q18 16 25 24" stroke="#C4A87A" stroke-width="0.8" fill="none"/>
-                    <line x1="18" y1="28" x2="18" y2="32" stroke="#C4A87A" stroke-width="1"/>
-                    <line x1="12" y1="32" x2="24" y2="32" stroke="#C4A87A" stroke-width="0.8"/>
-                    <circle cx="18" cy="10" r="3" fill="none" stroke="#E8A870" stroke-width="0.8" opacity="0.8"/>
-                    <path d="M16 8 Q18 5 20 8" stroke="#E8D060" stroke-width="0.7" fill="none" opacity="0.7"/>
-                </svg>
-            </div>
-            <p class="event-date">Saturday · 22 August 2026</p>
-            <h3 class="event-name">Reception</h3>
-            <p class="event-time">5:30 PM</p>
-            <p class="event-location">Bridgewater Event Center<br>Powell, Ohio</p>
-            <p class="event-desc">An evening of dinner, laughter, and joyful celebration as we welcome Ishaaq and Sara into their new chapter together. Join us as we mark this union with those who matter most.</p>
-        </div>
-    </div>
-</section>
 
 
 <!-- =============================================
@@ -1565,12 +1404,12 @@
                     <span class="venue-meta-val">Saturday, August 22, 2026</span>
                 </div>
                 <div class="venue-meta-row">
-                    <span class="venue-meta-label">Nikkah</span>
-                    <span class="venue-meta-val">2:00 PM</span>
+                    <span class="venue-meta-label">Ceremony Begins</span>
+                    <span class="venue-meta-val">5:30 PM</span>
                 </div>
                 <div class="venue-meta-row">
-                    <span class="venue-meta-label">Reception</span>
-                    <span class="venue-meta-val">5:30 PM</span>
+                    <span class="venue-meta-label">Reception to Follow</span>
+                    <span class="venue-meta-val"></span>
                 </div>
             </div>
 
