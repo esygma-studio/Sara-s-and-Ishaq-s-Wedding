@@ -39,10 +39,14 @@ function sendToResend(payload, apiKey) {
 module.exports = async function handler(req, res) {
     if (req.method === 'GET') {
         const key = process.env.RESEND_API_KEY;
+        const relatedKeys = Object.keys(process.env).filter(k =>
+            k.includes('RESEND') || k.includes('API') || k.includes('KEY')
+        );
         return res.status(200).json({
             keyPresent: !!key,
             keyStart: key ? key.substring(0, 8) : 'none',
             keyLength: key ? key.length : 0,
+            relatedKeys,
         });
     }
 
