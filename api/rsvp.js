@@ -72,7 +72,7 @@ module.exports = async function handler(req, res) {
     try {
         const result = await sendToResend({
             from: 'Wedding RSVP <onboarding@resend.dev>',
-            to: ['wieinvites@gmail.com'],
+            to: ['Kamawaal@yahoo.com'],
             reply_to: email,
             subject: `RSVP: ${first_name} ${last_name} — ${isAttending ? 'Attending ✅' : 'Not Attending ❌'}`,
             html,
