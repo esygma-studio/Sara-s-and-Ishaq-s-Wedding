@@ -37,19 +37,6 @@ function sendToResend(payload, apiKey) {
 }
 
 module.exports = async function handler(req, res) {
-    if (req.method === 'GET') {
-        const key = process.env.RESEND_API_KEY;
-        const relatedKeys = Object.keys(process.env).filter(k =>
-            k.includes('RESEND') || k.includes('API') || k.includes('KEY')
-        );
-        return res.status(200).json({
-            keyPresent: !!key,
-            keyStart: key ? key.substring(0, 8) : 'none',
-            keyLength: key ? key.length : 0,
-            relatedKeys,
-        });
-    }
-
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
@@ -96,9 +83,7 @@ module.exports = async function handler(req, res) {
         if (result.status >= 200 && result.status < 300) {
             return res.status(200).json({ success: true });
         } else {
-            const key = process.env.RESEND_API_KEY;
-            const keyHint = key ? `${key.slice(0,6)}... (len:${key.length})` : 'undefined';
-            return res.status(500).json({ error: 'Failed to send email', detail: result.body, keyHint });
+            return res.status(500).json({ error: 'Failed to send email' });
         }
     } catch (err) {
         console.error('Handler error:', err.message);
