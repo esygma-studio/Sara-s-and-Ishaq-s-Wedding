@@ -1,9 +1,28 @@
+function parseBody(req) {
+    return new Promise((resolve, reject) => {
+        let raw = '';
+        req.on('data', chunk => { raw += chunk.toString(); });
+        req.on('end', () => {
+            try { resolve(JSON.parse(raw)); }
+            catch { reject(new Error('Invalid JSON')); }
+        });
+        req.on('error', reject);
+    });
+}
+
 module.exports = async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { first_name, last_name, email, attending, guests, meal, message } = req.body;
+    let body;
+    try {
+        body = await parseBody(req);
+    } catch {
+        return res.status(400).json({ error: 'Invalid request body' });
+    }
+
+    const { first_name, last_name, email, attending, guests, meal, message } = body;
     const isAttending = attending === 'yes';
 
     const html = `
@@ -44,11 +63,11 @@ module.exports = async function handler(req, res) {
             return res.status(200).json({ success: true });
         } else {
             const error = await response.json();
-            console.error('Resend error:', error);
-            return res.status(500).json({ error: 'Failed to send email' });
+            console.error('Resend error:', JSON.stringify(error));
+            return res.status(500).json({ error: 'Failed to send email', detail: error });
         }
     } catch (err) {
-        console.error('Handler error:', err);
+        console.error('Handler error:', err.message);
         return res.status(500).json({ error: 'Failed to send email' });
     }
 };
