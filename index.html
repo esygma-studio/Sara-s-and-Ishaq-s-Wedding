@@ -228,6 +228,7 @@
     }
     .script-and { font-family:'Great Vibes',cursive; font-size:68px; color:var(--gold); line-height:1; display:block; margin:10px 0; }
     .hero-surname { font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:400; font-style:italic; letter-spacing:7px; color:var(--text-muted); margin-top:14px; }
+    .hero-is-monogram { display:block; margin:0 auto 52px; filter:drop-shadow(0 6px 20px rgba(184,150,90,0.22)); }
 
     .hero-date-line {
         font-family:'Raleway',sans-serif; font-size:11px; font-weight:300;
@@ -1152,44 +1153,28 @@
 
     <!-- Hero Content -->
     <div class="hero-inner">
-        <!-- Monogram -->
-        <div class="monogram a d1">
-            <svg viewBox="0 0 196 196" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="98" cy="98" r="95" fill="rgba(255,255,255,0.58)"/>
-                <circle cx="98" cy="98" r="94" fill="none" stroke="#C4A87A" stroke-width="0.9"/>
-                <circle cx="98" cy="98" r="83" fill="none" stroke="#D9C4A8" stroke-width="0.55"/>
-                <circle cx="98" cy="5" r="2.8" fill="#C4A87A"/><circle cx="191" cy="98" r="2.8" fill="#C4A87A"/>
-                <circle cx="98" cy="191" r="2.8" fill="#C4A87A"/><circle cx="5" cy="98" r="2.8" fill="#C4A87A"/>
-                <path d="M152,44 Q158,32 170,30 Q166,44 152,44Z" fill="#9BAF86" opacity="0.78"/>
-                <path d="M152,44 Q162,50 164,62 Q150,58 152,44Z" fill="#B2C89E" opacity="0.68"/>
-                <path d="M44,44 Q38,32 26,30 Q30,44 44,44Z" fill="#9BAF86" opacity="0.78"/>
-                <path d="M44,44 Q34,50 32,62 Q46,58 44,44Z" fill="#B2C89E" opacity="0.68"/>
-                <path d="M152,152 Q158,164 170,166 Q166,152 152,152Z" fill="#9BAF86" opacity="0.78"/>
-                <path d="M152,152 Q162,146 164,134 Q150,138 152,152Z" fill="#B2C89E" opacity="0.68"/>
-                <path d="M44,152 Q38,164 26,166 Q30,152 44,152Z" fill="#9BAF86" opacity="0.78"/>
-                <path d="M44,152 Q34,146 32,134 Q46,138 44,152Z" fill="#B2C89E" opacity="0.68"/>
-                <g transform="translate(168,30)"><ellipse rx="4.5" ry="7.5" fill="#E8AABB" opacity="0.88"/><ellipse rx="4.5" ry="7.5" transform="rotate(72)" fill="#E0A0B0" opacity="0.88"/><ellipse rx="4.5" ry="7.5" transform="rotate(144)" fill="#E8AABB" opacity="0.88"/><ellipse rx="4.5" ry="7.5" transform="rotate(216)" fill="#E0A0B0" opacity="0.88"/><ellipse rx="4.5" ry="7.5" transform="rotate(288)" fill="#E8AABB" opacity="0.88"/><circle r="3.5" fill="#F8D860"/></g>
-                <g transform="translate(28,30)"><ellipse rx="4.5" ry="7.5" fill="#E8A870" opacity="0.88"/><ellipse rx="4.5" ry="7.5" transform="rotate(72)" fill="#E09868" opacity="0.88"/><ellipse rx="4.5" ry="7.5" transform="rotate(144)" fill="#E8A870" opacity="0.88"/><ellipse rx="4.5" ry="7.5" transform="rotate(216)" fill="#E09868" opacity="0.88"/><ellipse rx="4.5" ry="7.5" transform="rotate(288)" fill="#E8A870" opacity="0.88"/><circle r="3.5" fill="#F8E050"/></g>
-                <g transform="translate(168,166)"><ellipse rx="4.5" ry="7.5" fill="#C8A0D5" opacity="0.88"/><ellipse rx="4.5" ry="7.5" transform="rotate(72)" fill="#C098CC" opacity="0.88"/><ellipse rx="4.5" ry="7.5" transform="rotate(144)" fill="#C8A0D5" opacity="0.88"/><ellipse rx="4.5" ry="7.5" transform="rotate(216)" fill="#C098CC" opacity="0.88"/><ellipse rx="4.5" ry="7.5" transform="rotate(288)" fill="#C8A0D5" opacity="0.88"/><circle r="3.5" fill="#F8D860"/></g>
-                <g transform="translate(28,166)"><ellipse rx="4.5" ry="7.5" fill="#D0607A" opacity="0.85"/><ellipse rx="4.5" ry="7.5" transform="rotate(72)" fill="#C85870" opacity="0.85"/><ellipse rx="4.5" ry="7.5" transform="rotate(144)" fill="#D0607A" opacity="0.85"/><ellipse rx="4.5" ry="7.5" transform="rotate(216)" fill="#C85870" opacity="0.85"/><ellipse rx="4.5" ry="7.5" transform="rotate(288)" fill="#D0607A" opacity="0.85"/><circle r="3.5" fill="#F8D860"/></g>
-            </svg>
-            <span class="monogram-text">I &amp; S</span>
-        </div>
+        <svg class="hero-is-monogram a d1" width="200" height="200" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="I S monogram">
+          <ellipse cx="50" cy="50" rx="46" ry="46" fill="rgba(250,247,240,0.92)" stroke="#C4A87A" stroke-width="1.4"/>
+          <ellipse cx="50" cy="50" rx="38" ry="38" fill="none" stroke="rgba(196,168,122,0.45)" stroke-width="0.7"/>
+          <path d="M50,4 Q57,12 50,20 Q43,12 50,4Z" fill="#C4A87A" opacity="0.8"/>
+          <path d="M50,80 Q57,88 50,96 Q43,88 50,80Z" fill="#C4A87A" opacity="0.8"/>
+          <path d="M4,50 Q12,57 20,50 Q12,43 4,50Z" fill="#C4A87A" opacity="0.8"/>
+          <path d="M80,50 Q88,57 96,50 Q88,43 80,50Z" fill="#C4A87A" opacity="0.8"/>
+          <rect x="29" y="8" width="4.5" height="4.5" transform="rotate(45,31.25,10.25)" fill="#C4A87A" opacity="0.65"/>
+          <rect x="66" y="8" width="4.5" height="4.5" transform="rotate(45,68.25,10.25)" fill="#C4A87A" opacity="0.65"/>
+          <rect x="29" y="87" width="4.5" height="4.5" transform="rotate(45,31.25,89.25)" fill="#C4A87A" opacity="0.65"/>
+          <rect x="66" y="87" width="4.5" height="4.5" transform="rotate(45,68.25,89.25)" fill="#C4A87A" opacity="0.65"/>
+          <text x="50" y="63" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="34" fill="#9A7840" opacity="0.95">I S</text>
+        </svg>
 
-        <p class="eyebrow-tag a d2">Together in Faith &nbsp;·&nbsp; United in Love</p>
-        <h1 class="hero-name a d3">Ishaaq</h1>
-        <span class="script-and a d4">&amp;</span>
-        <h1 class="hero-name a d5">Sara</h1>
-        <p class="hero-surname a d6">Dada</p>
-
-        <div class="ornament a d7" style="margin:34px 0 28px;">
+        <div class="ornament a d3" style="margin:34px 0 28px;">
             <div class="ornament-line"></div>
             <div class="ornament-mid"><div class="ornament-dot"></div><div class="ornament-diamond"></div><div class="ornament-dot"></div></div>
             <div class="ornament-line rev"></div>
         </div>
 
-        <p class="hero-date-line a d8">Saturday &nbsp;·&nbsp; August 22, 2026 &nbsp;·&nbsp; Powell, Ohio</p>
-        <a href="#rsvp" class="btn-rsvp a d9"><span>RSVP</span></a>
+        <p class="hero-date-line a d4">Saturday &nbsp;·&nbsp; August 22, 2026 &nbsp;·&nbsp; Powell, Ohio</p>
+        <a href="#rsvp" class="btn-rsvp a d5"><span>RSVP</span></a>
     </div>
 
     <div class="scroll-hint">
@@ -1355,9 +1340,6 @@
         </div>
     </div>
 
-    <div class="countdown-footer reveal reveal-delay-3">
-        <p><em>A lifetime of love is worth the wait.</em></p>
-    </div>
 </section>
 
 
@@ -1404,12 +1386,8 @@
                     <span class="venue-meta-val">Saturday, August 22, 2026</span>
                 </div>
                 <div class="venue-meta-row">
-                    <span class="venue-meta-label">Ceremony Begins</span>
+                    <span class="venue-meta-label">Time</span>
                     <span class="venue-meta-val">5:30 PM</span>
-                </div>
-                <div class="venue-meta-row">
-                    <span class="venue-meta-label">Reception to Follow</span>
-                    <span class="venue-meta-val"></span>
                 </div>
             </div>
 
