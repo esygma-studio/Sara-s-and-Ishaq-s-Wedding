@@ -37,6 +37,15 @@ function sendToResend(payload, apiKey) {
 }
 
 module.exports = async function handler(req, res) {
+    if (req.method === 'GET') {
+        const key = process.env.RESEND_API_KEY;
+        return res.status(200).json({
+            keyPresent: !!key,
+            keyStart: key ? key.substring(0, 8) : 'none',
+            keyLength: key ? key.length : 0,
+        });
+    }
+
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
