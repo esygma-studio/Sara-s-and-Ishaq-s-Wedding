@@ -1,14 +1,9 @@
-const { Resend } = require('resend');
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 module.exports = async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
     const { first_name, last_name, email, attending, guests, meal, message } = req.body;
-
     const isAttending = attending === 'yes';
 
     const html = `
@@ -30,17 +25,30 @@ module.exports = async function handler(req, res) {
     `;
 
     try {
-        await resend.emails.send({
-            from: 'Wedding RSVP <onboarding@resend.dev>',
-            to: 'wieinvites@gmail.com',
-            reply_to: email,
-            subject: `RSVP: ${first_name} ${last_name} — ${isAttending ? 'Attending ✅' : 'Not Attending ❌'}`,
-            html,
+        const response = await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                from: 'Wedding RSVP <onboarding@resend.dev>',
+                to: ['wieinvites@gmail.com'],
+                reply_to: email,
+                subject: `RSVP: ${first_name} ${last_name} — ${isAttending ? 'Attending ✅' : 'Not Attending ❌'}`,
+                html,
+            }),
         });
 
-        return res.status(200).json({ success: true });
+        if (response.ok) {
+            return res.status(200).json({ success: true });
+        } else {
+            const error = await response.json();
+            console.error('Resend error:', error);
+            return res.status(500).json({ error: 'Failed to send email' });
+        }
     } catch (err) {
-        console.error(err);
+        console.error('Handler error:', err);
         return res.status(500).json({ error: 'Failed to send email' });
     }
 };
