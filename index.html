@@ -1192,7 +1192,7 @@
     <div class="inv-section-head">
         <span class="eyebrow-tag">A Cordial Invitation</span>
         <div class="script-heading">You Are Invited</div>
-        <p>Please join us as we celebrate the union of Ishaaq &amp; Sara Dada</p>
+        <p>Please join us as we celebrate the union of Ishaaq &amp; Sara</p>
     </div>
 
     <div class="env-scale-wrap">
@@ -1596,10 +1596,9 @@ document.querySelectorAll('input[name="attending"]').forEach(r => {
     });
 });
 
-form.addEventListener('submit', function(e) {
+form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    // Basic validation
     const fname = document.getElementById('fname').value.trim();
     const email = document.getElementById('email').value.trim();
     if (!fname || !email) {
@@ -1607,14 +1606,37 @@ form.addEventListener('submit', function(e) {
         return;
     }
 
-    // Simulate submission (replace with Formspree / backend endpoint)
     const btn = form.querySelector('button[type="submit"] span');
     btn.textContent = 'Sending…';
-    setTimeout(() => {
-        form.style.display = 'none';
-        success.classList.add('show');
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 900);
+
+    const payload = {
+        first_name: document.getElementById('fname').value.trim(),
+        last_name:  document.getElementById('lname').value.trim(),
+        email:      document.getElementById('email').value.trim(),
+        attending:  document.querySelector('input[name="attending"]:checked').value,
+        guests:     document.getElementById('guests').value,
+        meal:       document.getElementById('meal').value,
+        message:    document.getElementById('message').value.trim(),
+    };
+
+    try {
+        const res = await fetch('/api/rsvp', {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+            form.style.display = 'none';
+            success.classList.add('show');
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            btn.textContent = 'Send RSVP';
+            alert('Something went wrong. Please try again.');
+        }
+    } catch {
+        btn.textContent = 'Send RSVP';
+        alert('Something went wrong. Please try again.');
+    }
 });
 </script>
 </body>
