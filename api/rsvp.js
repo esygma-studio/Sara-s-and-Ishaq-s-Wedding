@@ -1,3 +1,5 @@
+const https = require('https');
+
 function parseBody(req) {
     return new Promise((resolve, reject) => {
         let raw = '';
@@ -7,6 +9,30 @@ function parseBody(req) {
             catch { reject(new Error('Invalid JSON')); }
         });
         req.on('error', reject);
+    });
+}
+
+function sendToResend(payload, apiKey) {
+    return new Promise((resolve, reject) => {
+        const body = JSON.stringify(payload);
+        const options = {
+            hostname: 'api.resend.com',
+            path: '/emails',
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${apiKey}`,
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(body),
+            },
+        };
+        const req = https.request(options, res => {
+            let data = '';
+            res.on('data', chunk => { data += chunk; });
+            res.on('end', () => resolve({ status: res.statusCode, body: data }));
+        });
+        req.on('error', reject);
+        req.write(body);
+        req.end();
     });
 }
 
@@ -44,27 +70,20 @@ module.exports = async function handler(req, res) {
     `;
 
     try {
-        const response = await fetch('https://api.resend.com/emails', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                from: 'Wedding RSVP <onboarding@resend.dev>',
-                to: ['wieinvites@gmail.com'],
-                reply_to: email,
-                subject: `RSVP: ${first_name} ${last_name} — ${isAttending ? 'Attending ✅' : 'Not Attending ❌'}`,
-                html,
-            }),
-        });
+        const result = await sendToResend({
+            from: 'Wedding RSVP <onboarding@resend.dev>',
+            to: ['wieinvites@gmail.com'],
+            reply_to: email,
+            subject: `RSVP: ${first_name} ${last_name} — ${isAttending ? 'Attending ✅' : 'Not Attending ❌'}`,
+            html,
+        }, process.env.RESEND_API_KEY);
 
-        if (response.ok) {
+        console.log('Resend response:', result.status, result.body);
+
+        if (result.status >= 200 && result.status < 300) {
             return res.status(200).json({ success: true });
         } else {
-            const error = await response.json();
-            console.error('Resend error:', JSON.stringify(error));
-            return res.status(500).json({ error: 'Failed to send email', detail: error });
+            return res.status(500).json({ error: 'Failed to send email', detail: result.body });
         }
     } catch (err) {
         console.error('Handler error:', err.message);
