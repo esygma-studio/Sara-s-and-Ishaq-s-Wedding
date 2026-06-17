@@ -83,7 +83,9 @@ module.exports = async function handler(req, res) {
         if (result.status >= 200 && result.status < 300) {
             return res.status(200).json({ success: true });
         } else {
-            return res.status(500).json({ error: 'Failed to send email', detail: result.body });
+            const key = process.env.RESEND_API_KEY;
+            const keyHint = key ? `${key.slice(0,6)}... (len:${key.length})` : 'undefined';
+            return res.status(500).json({ error: 'Failed to send email', detail: result.body, keyHint });
         }
     } catch (err) {
         console.error('Handler error:', err.message);
