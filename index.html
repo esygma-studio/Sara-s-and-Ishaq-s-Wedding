@@ -770,7 +770,8 @@
         transform: translateX(-50%) translateY(-310px);
     }
 
-    /* ── Baroque border overlay (embossed cream look) ── */
+
+    /* ── Scalloped border overlay ── */
     .inv-border-svg {
         position: absolute; inset: 0; width: 100%; height: 100%;
         pointer-events: none; z-index: 5; overflow: visible;
@@ -783,13 +784,13 @@
         filter: drop-shadow(0 8px 16px rgba(58,36,16,0.18));
     }
     .inv-rose-spray--tr {
-        top: -16px; right: -54px;
-        width: 250px;
-        transform: rotate(180deg);
+        top: 8px; right: -45px;
+        width: 190px;
+        transform: rotate(190deg);
     }
     .inv-rose-spray--bl {
-        bottom: 16px; left: -40px;
-        width: 178px;
+        bottom: 60px; left: -40px;
+        width: 150px;
     }
 
     /* ── White rose clusters on envelope body ── */
@@ -809,14 +810,14 @@
     }
 
     /* ── Gold monogram at top of card ── */
-    .inv-monogram {
-        position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
-        z-index: 7; pointer-events: none;
+    .inv-monogram-header {
+        display: block; margin: 0 auto 24px;
+        filter: drop-shadow(0 4px 16px rgba(184,150,90,0.20));
     }
 
     /* Card text content */
     .inv-card-body {
-        padding: 128px 44px 40px;
+        padding: 44px 44px 40px;
         display: flex; flex-direction: column; align-items: center;
         gap: 4px; position: relative; z-index: 2;
     }
@@ -945,24 +946,13 @@
         height: 1px; background: rgba(196,168,122,0.55);
     }
 
-    /* Wax seal */
+    /* IS monogram on envelope body front */
     .env-seal {
-        position: absolute; bottom: 22px; left: 50%;
+        position: absolute; bottom: 114px; left: 50%;
         transform: translateX(-50%);
-        width: 56px; height: 56px; border-radius: 50%;
-        background: radial-gradient(circle at 36% 32%, #DDB86A 0%, #9A7840 100%);
-        display: flex; align-items: center; justify-content: center;
-        box-shadow:
-            0 3px 12px rgba(58,36,16,0.32),
-            inset 0 1px 4px rgba(255,235,155,0.55),
-            inset 0 -1px 3px rgba(80,50,10,0.3);
-        z-index: 11;
-    }
-    .env-seal-text {
-        font-family: 'Great Vibes', cursive;
-        font-size: 17px; color: rgba(255,255,255,0.93); line-height: 1;
-        text-shadow: 0 1px 3px rgba(80,50,10,0.55);
-        pointer-events: none;
+        width: 72px; height: 72px;
+        z-index: 11; display: block;
+        filter: drop-shadow(0 4px 12px rgba(58,36,16,0.28));
     }
 
     /* ---- Responsive ---- */
@@ -1031,10 +1021,8 @@
 </nav>
 
 
-<!-- =============================================
-     HERO
-============================================= -->
-<section class="hero" id="home">
+<!-- HERO REMOVED -->
+<section class="hero" id="home" style="display:none;">
 
     <!-- Hanging Floral Garland -->
     <svg class="floral-top" viewBox="0 0 1440 290"
@@ -1189,6 +1177,21 @@
 ============================================= -->
 <section class="inv-section" id="invitation">
 
+    <!-- ── I·S Monogram header above card ── -->
+    <svg class="inv-monogram-header" width="160" height="160" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="I S monogram">
+      <ellipse cx="50" cy="50" rx="46" ry="46" fill="rgba(250,247,240,0.92)" stroke="#C4A87A" stroke-width="1.4"/>
+      <ellipse cx="50" cy="50" rx="38" ry="38" fill="none" stroke="rgba(196,168,122,0.45)" stroke-width="0.7"/>
+      <path d="M50,4 Q57,12 50,20 Q43,12 50,4Z" fill="#C4A87A" opacity="0.8"/>
+      <path d="M50,80 Q57,88 50,96 Q43,88 50,80Z" fill="#C4A87A" opacity="0.8"/>
+      <path d="M4,50 Q12,57 20,50 Q12,43 4,50Z" fill="#C4A87A" opacity="0.8"/>
+      <path d="M80,50 Q88,57 96,50 Q88,43 80,50Z" fill="#C4A87A" opacity="0.8"/>
+      <rect x="29" y="8" width="4.5" height="4.5" transform="rotate(45,31.25,10.25)" fill="#C4A87A" opacity="0.65"/>
+      <rect x="66" y="8" width="4.5" height="4.5" transform="rotate(45,68.25,10.25)" fill="#C4A87A" opacity="0.65"/>
+      <rect x="29" y="87" width="4.5" height="4.5" transform="rotate(45,31.25,89.25)" fill="#C4A87A" opacity="0.65"/>
+      <rect x="66" y="87" width="4.5" height="4.5" transform="rotate(45,68.25,89.25)" fill="#C4A87A" opacity="0.65"/>
+      <text x="50" y="63" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="34" fill="#9A7840" opacity="0.95">I S</text>
+    </svg>
+
     <div class="inv-section-head">
         <span class="eyebrow-tag">A Cordial Invitation</span>
         <div class="script-heading">You Are Invited</div>
@@ -1201,7 +1204,7 @@
             <!-- ===== INVITATION CARD ===== -->
             <div class="inv-card" id="invCard">
 
-                <!-- ── Scalloped baroque frame ── -->
+                <!-- ── Scalloped border frame ── -->
                 <svg class="inv-border-svg" viewBox="0 0 374 530" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <!-- Gold outer border line -->
                   <rect x="4" y="4" width="366" height="522" rx="2" fill="none" stroke="rgba(184,144,80,0.75)" stroke-width="1.4"/>
@@ -1222,25 +1225,6 @@
                   <rect x="367" y="260" width="5" height="5" transform="rotate(45,369.5,262.5)" fill="rgba(184,144,80,0.55)"/>
                   <rect x="184" y="2" width="5" height="5" transform="rotate(45,186.5,4.5)" fill="rgba(184,144,80,0.55)"/>
                   <rect x="184" y="523" width="5" height="5" transform="rotate(45,186.5,525.5)" fill="rgba(184,144,80,0.55)"/>
-                </svg>
-
-                <!-- ── Gold I·S monogram ── -->
-                <svg class="inv-monogram" width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <!-- Outer oval -->
-                  <ellipse cx="50" cy="50" rx="46" ry="46" fill="rgba(250,247,240,0.92)" stroke="#C4A87A" stroke-width="1.4"/>
-                  <ellipse cx="50" cy="50" rx="38" ry="38" fill="none" stroke="rgba(196,168,122,0.45)" stroke-width="0.7"/>
-                  <!-- Cardinal flourishes -->
-                  <path d="M50,4 Q57,12 50,20 Q43,12 50,4Z" fill="#C4A87A" opacity="0.8"/>
-                  <path d="M50,80 Q57,88 50,96 Q43,88 50,80Z" fill="#C4A87A" opacity="0.8"/>
-                  <path d="M4,50 Q12,57 20,50 Q12,43 4,50Z" fill="#C4A87A" opacity="0.8"/>
-                  <path d="M80,50 Q88,57 96,50 Q88,43 80,50Z" fill="#C4A87A" opacity="0.8"/>
-                  <!-- Diagonal diamonds -->
-                  <rect x="29" y="8" width="4.5" height="4.5" transform="rotate(45,31.25,10.25)" fill="#C4A87A" opacity="0.65"/>
-                  <rect x="66" y="8" width="4.5" height="4.5" transform="rotate(45,68.25,10.25)" fill="#C4A87A" opacity="0.65"/>
-                  <rect x="29" y="87" width="4.5" height="4.5" transform="rotate(45,31.25,89.25)" fill="#C4A87A" opacity="0.65"/>
-                  <rect x="66" y="87" width="4.5" height="4.5" transform="rotate(45,68.25,89.25)" fill="#C4A87A" opacity="0.65"/>
-                  <!-- IS lettering -->
-                  <text x="50" y="63" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="34" fill="#9A7840" opacity="0.95">I S</text>
                 </svg>
 
                 <!-- ── White rose cascade — top right (real photo) ── -->
@@ -1285,7 +1269,21 @@
                     <div class="env-side-r"></div>
                     <div class="env-bottom"></div>
                 </div>
-                <div class="env-center-mark"></div>
+                <!-- IS monogram on envelope body front -->
+                <svg class="env-seal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="I S monogram">
+                  <ellipse cx="50" cy="50" rx="46" ry="46" fill="rgba(250,247,240,0.92)" stroke="#C4A87A" stroke-width="1.4"/>
+                  <ellipse cx="50" cy="50" rx="38" ry="38" fill="none" stroke="rgba(196,168,122,0.45)" stroke-width="0.7"/>
+                  <path d="M50,4 Q57,12 50,20 Q43,12 50,4Z" fill="#C4A87A" opacity="0.8"/>
+                  <path d="M50,80 Q57,88 50,96 Q43,88 50,80Z" fill="#C4A87A" opacity="0.8"/>
+                  <path d="M4,50 Q12,57 20,50 Q12,43 4,50Z" fill="#C4A87A" opacity="0.8"/>
+                  <path d="M80,50 Q88,57 96,50 Q88,43 80,50Z" fill="#C4A87A" opacity="0.8"/>
+                  <rect x="29" y="8" width="4.5" height="4.5" transform="rotate(45,31.25,10.25)" fill="#C4A87A" opacity="0.65"/>
+                  <rect x="66" y="8" width="4.5" height="4.5" transform="rotate(45,68.25,10.25)" fill="#C4A87A" opacity="0.65"/>
+                  <rect x="29" y="87" width="4.5" height="4.5" transform="rotate(45,31.25,89.25)" fill="#C4A87A" opacity="0.65"/>
+                  <rect x="66" y="87" width="4.5" height="4.5" transform="rotate(45,68.25,89.25)" fill="#C4A87A" opacity="0.65"/>
+                  <text x="50" y="63" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="34" fill="#9A7840" opacity="0.95">I S</text>
+                </svg>
+
                 <!-- White rose arrangement on envelope — left cluster (real photo) -->
                 <img class="env-rose env-rose--l" src="images/rose-corner.png" alt="" aria-hidden="true">
                 <!-- White rose arrangement on envelope — right cluster (mirrored) -->
@@ -1295,10 +1293,6 @@
             <!-- ===== FLAP (triangle that rotates open) ===== -->
             <div class="env-flap-persp">
                 <div class="env-flap" id="envFlap">
-                    <!-- Wax seal -->
-                    <div class="env-seal">
-                        <span class="env-seal-text">I &amp; S</span>
-                    </div>
                 </div>
             </div>
 
@@ -1412,6 +1406,7 @@
             <span class="eyebrow-tag">We Hope to See You There</span>
             <div class="script-heading">RSVP</div>
             <p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;font-weight:300;color:var(--text-muted);margin-top:10px;letter-spacing:0.5px;">Kindly respond by <strong style="font-style:normal;color:var(--gold);font-weight:400;">July 30, 2026</strong></p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;font-weight:300;color:var(--text-muted);margin-top:8px;letter-spacing:0.5px;">We kindly request this be an adults-only celebration.</p>
         </div>
 
         <!-- Form -->
