@@ -24,7 +24,7 @@ module.exports = async function handler(req, res) {
         return res.status(400).json({ error: 'Invalid request body' });
     }
 
-    const { first_name, last_name, email, attending, guests, meal, message } = body;
+    const { first_name, last_name, email, attending, guests, message } = body;
     const isAttending = attending === 'yes';
 
     const transporter = nodemailer.createTransport({
@@ -43,10 +43,7 @@ module.exports = async function handler(req, res) {
             <p><strong>Name:</strong> ${first_name} ${last_name}</p>
             <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
             <p><strong>Attending:</strong> ${isAttending ? '✅ Joyfully Accepts' : '❌ Regretfully Declines'}</p>
-            ${isAttending ? `
-            <p><strong>Number of Guests:</strong> ${guests}</p>
-            <p><strong>Meal Preference:</strong> ${meal}</p>
-            ` : ''}
+            ${isAttending ? `<p><strong>Number of Guests:</strong> ${guests}</p>` : ''}
             ${message ? `<p><strong>Note:</strong> ${message}</p>` : ''}
             <hr style="border:none;border-top:1px solid #D9C4A8;margin-top:24px;">
             <p style="font-size:12px;color:#7A6250;">Ishaaq &amp; Sara — August 22, 2026</p>

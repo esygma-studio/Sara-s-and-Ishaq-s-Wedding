@@ -1448,16 +1448,6 @@
                         <option value="5">5+ Guests</option>
                     </select>
                 </div>
-                <div>
-                    <label class="form-label" for="meal">Meal Preference</label>
-                    <select class="form-select" id="meal" name="meal">
-                        <option value="standard">Standard</option>
-                        <option value="vegetarian">Vegetarian</option>
-                        <option value="vegan">Vegan</option>
-                        <option value="halal">Halal Only</option>
-                        <option value="gluten-free">Gluten-Free</option>
-                    </select>
-                </div>
             </div>
 
             <div class="form-row">
@@ -1605,7 +1595,6 @@ form.addEventListener('submit', async function(e) {
         email:      document.getElementById('email').value.trim(),
         attending:  document.querySelector('input[name="attending"]:checked').value,
         guests:     document.getElementById('guests').value,
-        meal:       document.getElementById('meal').value,
         message:    document.getElementById('message').value.trim(),
     };
 
