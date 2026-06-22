@@ -83,7 +83,7 @@ module.exports = async function handler(req, res) {
         if (result.status >= 200 && result.status < 300) {
             return res.status(200).json({ success: true });
         } else {
-            return res.status(500).json({ error: 'Failed to send email' });
+            return res.status(500).json({ error: 'Failed to send email', detail: result.body, status: result.status });
         }
     } catch (err) {
         console.error('Handler error:', err.message);
