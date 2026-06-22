@@ -1,4 +1,4 @@
-const https = require('https');
+const nodemailer = require('nodemailer');
 
 function parseBody(req) {
     return new Promise((resolve, reject) => {
@@ -9,30 +9,6 @@ function parseBody(req) {
             catch { reject(new Error('Invalid JSON')); }
         });
         req.on('error', reject);
-    });
-}
-
-function sendToResend(payload, apiKey) {
-    return new Promise((resolve, reject) => {
-        const body = JSON.stringify(payload);
-        const options = {
-            hostname: 'api.resend.com',
-            path: '/emails',
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${apiKey}`,
-                'Content-Type': 'application/json',
-                'Content-Length': Buffer.byteLength(body),
-            },
-        };
-        const req = https.request(options, res => {
-            let data = '';
-            res.on('data', chunk => { data += chunk; });
-            res.on('end', () => resolve({ status: res.statusCode, body: data }));
-        });
-        req.on('error', reject);
-        req.write(body);
-        req.end();
     });
 }
 
@@ -50,6 +26,14 @@ module.exports = async function handler(req, res) {
 
     const { first_name, last_name, email, attending, guests, meal, message } = body;
     const isAttending = attending === 'yes';
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_PASS,
+        },
+    });
 
     const html = `
         <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#3A2410;">
@@ -70,23 +54,17 @@ module.exports = async function handler(req, res) {
     `;
 
     try {
-        const result = await sendToResend({
-            from: 'Wedding RSVP <onboarding@resend.dev>',
-            to: ['Kamawaal@yahoo.com'],
-            reply_to: email,
+        await transporter.sendMail({
+            from: `"Wedding RSVP" <${process.env.GMAIL_USER}>`,
+            to: 'Kamawaal@yahoo.com',
+            replyTo: email,
             subject: `RSVP: ${first_name} ${last_name} — ${isAttending ? 'Attending ✅' : 'Not Attending ❌'}`,
             html,
-        }, process.env.RESEND_API_KEY);
+        });
 
-        console.log('Resend response:', result.status, result.body);
-
-        if (result.status >= 200 && result.status < 300) {
-            return res.status(200).json({ success: true });
-        } else {
-            return res.status(500).json({ error: 'Failed to send email', detail: result.body, status: result.status });
-        }
+        return res.status(200).json({ success: true });
     } catch (err) {
-        console.error('Handler error:', err.message);
-        return res.status(500).json({ error: 'Failed to send email' });
+        console.error('Mail error:', err.message);
+        return res.status(500).json({ error: 'Failed to send email', detail: err.message });
     }
 };
